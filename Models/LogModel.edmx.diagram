@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2f97d50b7794eafb45cf0c8a0f18e60" Name="Diagram1" ZoomLevel="115">
+        <EntityTypeShape EntityType="practice_purposeModel.new_User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="practice_purposeModel.Author" Width="1.5" PointX="3.75" PointY="1.375" />
+        <EntityTypeShape EntityType="practice_purposeModel.Book" Width="1.5" PointX="6" PointY="1" />
+        <EntityTypeShape EntityType="practice_purposeModel.Order_Book" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4" />
+        <EntityTypeShape EntityType="practice_purposeModel.Admin" Width="1.5" PointX="3.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

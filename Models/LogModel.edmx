@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="practice_purposeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Type="int" Nullable="false" />
+          <Property Name="Admin_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Admin_Password" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Author_Name" />
+          </Key>
+          <Property Name="Author_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Author_Name" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_Name" />
+          </Key>
+          <Property Name="Book_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Journal" Type="varchar" MaxLength="15" />
+          <Property Name="Author_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Edition" Type="int" />
+          <Property Name="Publisher_Name" Type="varchar" MaxLength="30" />
+          <Property Name="No_Of_Books" Type="int" />
+        </EntityType>
+        <EntityType Name="new_User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="30" />
+          <Property Name="Password" Type="varchar" MaxLength="15" />
+          <Property Name="address" Type="varchar" MaxLength="100" />
+          <Property Name="mail" Type="varchar" MaxLength="30" />
+          <Property Name="mobile" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Order_Book">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Issue_Date" Type="date" />
+          <Property Name="Return_Date" Type="date" />
+        </EntityType>
+        <Association Name="FK__Book__Author_Nam__4E88ABD4">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Author_Name" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Author_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="practice_purposeModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="new_User" EntityType="Self.new_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Book" EntityType="Self.Order_Book" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Book__Author_Nam__4E88ABD4" Association="Self.FK__Book__Author_Nam__4E88ABD4">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="practice_purposeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="new_User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="practice_purposeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="new_User" EntityType="Self.new_User" />
+          <EntitySet Name="Authors" EntityType="practice_purposeModel.Author" />
+          <EntitySet Name="Books" EntityType="practice_purposeModel.Book" />
+          <EntitySet Name="Order_Book" EntityType="practice_purposeModel.Order_Book" />
+          <AssociationSet Name="FK__Book__Author_Nam__4E88ABD4" Association="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <EntitySet Name="Admins" EntityType="practice_purposeModel.Admin" />
+        </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Author_Name" />
+          </Key>
+          <Property Name="Author_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Author_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Books" Relationship="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4" FromRole="Author" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_Name" />
+          </Key>
+          <Property Name="Book_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Book_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Journal" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Author_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Edition" Type="Int32" />
+          <Property Name="Publisher_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="No_Of_Books" Type="Int32" />
+          <NavigationProperty Name="Author" Relationship="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4" FromRole="Book" ToRole="Author" />
+        </EntityType>
+        <EntityType Name="Order_Book">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Issue_Date" Type="DateTime" Precision="0" />
+          <Property Name="Return_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK__Book__Author_Nam__4E88ABD4">
+          <End Type="practice_purposeModel.Author" Role="Author" Multiplicity="0..1" />
+          <End Type="practice_purposeModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Author_Name" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Author_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Type="Int32" Nullable="false" />
+          <Property Name="Admin_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Admin_Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="practice_purposeModelStoreContainer" CdmEntityContainer="practice_purposeEntities">
+          <EntitySetMapping Name="new_User">
+            <EntityTypeMapping TypeName="practice_purposeModel.new_User">
+              <MappingFragment StoreEntitySet="new_User">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="practice_purposeModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Author_Name" ColumnName="Author_Name" />
+                <ScalarProperty Name="Author_ID" ColumnName="Author_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="practice_purposeModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="No_Of_Books" ColumnName="No_Of_Books" />
+                <ScalarProperty Name="Publisher_Name" ColumnName="Publisher_Name" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="Author_Name" ColumnName="Author_Name" />
+                <ScalarProperty Name="Journal" ColumnName="Journal" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Book">
+            <EntityTypeMapping TypeName="practice_purposeModel.Order_Book">
+              <MappingFragment StoreEntitySet="Order_Book">
+                <ScalarProperty Name="Return_Date" ColumnName="Return_Date" />
+                <ScalarProperty Name="Issue_Date" ColumnName="Issue_Date" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="practice_purposeModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+                <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+                <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
