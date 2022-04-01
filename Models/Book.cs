@@ -14,6 +14,11 @@ namespace RegandLogin.Models
     
     public partial class Book
     {
+        public Book()
+        {
+            this.issuebooks = new HashSet<issuebook>();
+        }
+    
         public int Book_ID { get; set; }
         public string Book_Name { get; set; }
         public string Journal { get; set; }
@@ -23,5 +28,6 @@ namespace RegandLogin.Models
         public Nullable<int> No_Of_Books { get; set; }
     
         public virtual Author Author { get; set; }
+        public virtual ICollection<issuebook> issuebooks { get; set; }
     }
 }

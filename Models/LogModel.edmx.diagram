@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="practice_purposeModel.Order_Book" Width="1.5" PointX="0.75" PointY="3.75" />
         <AssociationConnector Association="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4" />
         <EntityTypeShape EntityType="practice_purposeModel.Admin" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="practice_purposeModel.issuebook" Width="1.5" PointX="8.25" PointY="1.25" />
+        <AssociationConnector Association="practice_purposeModel.FK__issuebook__book___6FE99F9F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

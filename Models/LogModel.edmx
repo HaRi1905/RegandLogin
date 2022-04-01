@@ -32,6 +32,16 @@
           <Property Name="Publisher_Name" Type="varchar" MaxLength="30" />
           <Property Name="No_Of_Books" Type="int" />
         </EntityType>
+        <EntityType Name="issuebook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_id" Type="int" />
+          <Property Name="book_id" Type="varchar" MaxLength="30" />
+          <Property Name="issuedate" Type="date" />
+          <Property Name="returndate" Type="date" />
+        </EntityType>
         <EntityType Name="new_User">
           <Key>
             <PropertyRef Name="user_id" />
@@ -65,15 +75,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__issuebook__book___6FE99F9F">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="issuebook" Type="Self.issuebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Book_Name" />
+            </Principal>
+            <Dependent Role="issuebook">
+              <PropertyRef Name="book_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="practice_purposeModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="issuebook" EntityType="Self.issuebook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="new_User" EntityType="Self.new_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_Book" EntityType="Self.Order_Book" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Book__Author_Nam__4E88ABD4" Association="Self.FK__Book__Author_Nam__4E88ABD4">
             <End Role="Author" EntitySet="Author" />
             <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__issuebook__book___6FE99F9F" Association="Self.FK__issuebook__book___6FE99F9F">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="issuebook" EntitySet="issuebook" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -101,6 +128,11 @@
             <End Role="Book" EntitySet="Books" />
           </AssociationSet>
           <EntitySet Name="Admins" EntityType="practice_purposeModel.Admin" />
+          <EntitySet Name="issuebooks" EntityType="practice_purposeModel.issuebook" />
+          <AssociationSet Name="FK__issuebook__book___6FE99F9F" Association="practice_purposeModel.FK__issuebook__book___6FE99F9F">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="issuebook" EntitySet="issuebooks" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Author">
           <Key>
@@ -122,6 +154,7 @@
           <Property Name="Publisher_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="No_Of_Books" Type="Int32" />
           <NavigationProperty Name="Author" Relationship="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="issuebooks" Relationship="practice_purposeModel.FK__issuebook__book___6FE99F9F" FromRole="Book" ToRole="issuebook" />
         </EntityType>
         <EntityType Name="Order_Book">
           <Key>
@@ -153,6 +186,29 @@
           <Property Name="Admin_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Admin_Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="issuebook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="m_id" Type="Int32" />
+          <Property Name="book_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="issuedate" Type="DateTime" Precision="0" />
+          <Property Name="returndate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Book" Relationship="practice_purposeModel.FK__issuebook__book___6FE99F9F" FromRole="issuebook" ToRole="Book" />
+        </EntityType>
+        <Association Name="FK__issuebook__book___6FE99F9F">
+          <End Type="practice_purposeModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="practice_purposeModel.issuebook" Role="issuebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Book_Name" />
+            </Principal>
+            <Dependent Role="issuebook">
+              <PropertyRef Name="book_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -209,6 +265,17 @@
                 <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
                 <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
                 <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="issuebooks">
+            <EntityTypeMapping TypeName="practice_purposeModel.issuebook">
+              <MappingFragment StoreEntitySet="issuebook">
+                <ScalarProperty Name="returndate" ColumnName="returndate" />
+                <ScalarProperty Name="issuedate" ColumnName="issuedate" />
+                <ScalarProperty Name="book_id" ColumnName="book_id" />
+                <ScalarProperty Name="m_id" ColumnName="m_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

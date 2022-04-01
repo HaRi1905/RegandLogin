@@ -7,11 +7,13 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     
-    <div class="navbar-right">
+    <div class="navbar-left">
         <li>@Html.ActionLink("Log Out", "Index", "Login")</li>
     </div>
 </div>
-
+<ul>
+    <h3> <li> @Html.ActionLink("Order Book", "Index", "issuebooks")</li> </h3>
+</ul>
     <h2>List Of Books</h2>
 
 <form id="formSearch" method="post">

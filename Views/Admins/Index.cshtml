@@ -4,41 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<div class="navbar-collapse collapse">
 
-    <li>@Html.ActionLink("Add Author", "Create", "Authors")</li>
-    <li>@Html.ActionLink("Add Book", "Create", "Books")</li>
-    <li>@Html.ActionLink("User List", "Index", "new_User")</li>
- </div>
+<h2> <li>@Html.ActionLink("Add Author", "Create", "Authors")</li> </h2>
+<h2> <li>@Html.ActionLink("Add Book", "Create", "Books")</li> </h2>
+<h2>  <li>@Html.ActionLink("User List", "Index", "new_User")</li> </h2>
 
 
-    <h2>Index</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin_Name)
-            </th>
-            
-            <th></th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Admin_Name)
-                </td>
-               
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Admin_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Admin_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Admin_Id })
-                </td>
-            </tr>
-        }
-
-    </table>

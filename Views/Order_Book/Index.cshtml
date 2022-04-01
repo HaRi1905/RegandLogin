@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Order_Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.user_id)
         </th>
         <th>
@@ -27,25 +30,28 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.user_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Book_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Issue_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Return_Date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Order_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Order_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Order_Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order_Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.user_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Book_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Issue_Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Return_Date)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Order_Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Order_Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Order_Id })
+    </td>
+</tr>
 }
 
 </table>

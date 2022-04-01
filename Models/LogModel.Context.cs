@@ -30,5 +30,6 @@ namespace RegandLogin.Models
         public DbSet<Book> Books { get; set; }
         public DbSet<Order_Book> Order_Book { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<issuebook> issuebooks { get; set; }
     }
 }

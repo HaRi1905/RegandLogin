@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\issuebooksController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\new_UserController.cs" />
     <Compile Include="Controllers\Order_BookController.cs" />
@@ -149,6 +150,9 @@
       <DependentUpon>LogModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs">
+      <DependentUpon>LogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\issuebook.cs">
       <DependentUpon>LogModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogModel.Context.cs">
@@ -255,6 +259,11 @@
     <Content Include="Views\Order_Book\Details.cshtml" />
     <Content Include="Views\Order_Book\Edit.cshtml" />
     <Content Include="Views\Order_Book\Index.cshtml" />
+    <Content Include="Views\issuebooks\Create.cshtml" />
+    <Content Include="Views\issuebooks\Delete.cshtml" />
+    <Content Include="Views\issuebooks\Details.cshtml" />
+    <Content Include="Views\issuebooks\Edit.cshtml" />
+    <Content Include="Views\issuebooks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
