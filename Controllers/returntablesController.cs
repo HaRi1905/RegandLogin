@@ -10,107 +10,107 @@ using RegandLogin.Models;
 
 namespace RegandLogin.Controllers
 {
-    public class Order_BookController : Controller
+    public class returntablesController : Controller
     {
         private practice_purposeEntities db = new practice_purposeEntities();
 
-        // GET: Order_Book
+        // GET: returntables
         public ActionResult Index()
         {
-            return View(db.Order_Book.ToList());
+            return View(db.returntables.ToList());
         }
 
-        // GET: Order_Book/Details/5
+        // GET: returntables/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order_Book order_Book = db.Order_Book.Find(id);
-            if (order_Book == null)
+            returntable returntable = db.returntables.Find(id);
+            if (returntable == null)
             {
                 return HttpNotFound();
             }
-            return View(order_Book);
+            return View(returntable);
         }
 
-        // GET: Order_Book/Create
+        // GET: returntables/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Order_Book/Create
+        // POST: returntables/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Order_Id,user_id,Book_Name,Issue_Date,Return_Date")] Order_Book order_Book)
+        public ActionResult Create([Bind(Include = "return_id,return_date,today_date,elapse,fine")] returntable returntable)
         {
             if (ModelState.IsValid)
             {
-                db.Order_Book.Add(order_Book);
+                db.returntables.Add(returntable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(order_Book);
+            return View(returntable);
         }
 
-        // GET: Order_Book/Edit/5
+        // GET: returntables/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order_Book order_Book = db.Order_Book.Find(id);
-            if (order_Book == null)
+            returntable returntable = db.returntables.Find(id);
+            if (returntable == null)
             {
                 return HttpNotFound();
             }
-            return View(order_Book);
+            return View(returntable);
         }
 
-        // POST: Order_Book/Edit/5
+        // POST: returntables/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Order_Id,user_id,Book_Name,Issue_Date,Return_Date")] Order_Book order_Book)
+        public ActionResult Edit([Bind(Include = "return_id,return_date,today_date,elapse,fine")] returntable returntable)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order_Book).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(returntable).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(order_Book);
+            return View(returntable);
         }
 
-        // GET: Order_Book/Delete/5
+        // GET: returntables/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order_Book order_Book = db.Order_Book.Find(id);
-            if (order_Book == null)
+            returntable returntable = db.returntables.Find(id);
+            if (returntable == null)
             {
                 return HttpNotFound();
             }
-            return View(order_Book);
+            return View(returntable);
         }
 
-        // POST: Order_Book/Delete/5
+        // POST: returntables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order_Book order_Book = db.Order_Book.Find(id);
-            db.Order_Book.Remove(order_Book);
+            returntable returntable = db.returntables.Find(id);
+            db.returntables.Remove(returntable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

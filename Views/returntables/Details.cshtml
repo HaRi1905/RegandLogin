@@ -1,0 +1,50 @@
+﻿@model RegandLogin.Models.returntable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>returntable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.return_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.return_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.today_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.today_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.elapse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.elapse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fine)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.return_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

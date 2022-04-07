@@ -138,7 +138,7 @@
     <Compile Include="Controllers\issuebooksController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\new_UserController.cs" />
-    <Compile Include="Controllers\Order_BookController.cs" />
+    <Compile Include="Controllers\returntablesController.cs" />
     <Compile Include="Controllers\ViewBookController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,7 +173,7 @@
     <Compile Include="Models\new_User.cs">
       <DependentUpon>LogModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Order_Book.cs">
+    <Compile Include="Models\returntable.cs">
       <DependentUpon>LogModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,16 +254,16 @@
     <Content Include="Views\Admins\Index.cshtml" />
     <Content Include="Views\Admin_Login\Index.cshtml" />
     <Content Include="Views\ViewBook\Index.cshtml" />
-    <Content Include="Views\Order_Book\Create.cshtml" />
-    <Content Include="Views\Order_Book\Delete.cshtml" />
-    <Content Include="Views\Order_Book\Details.cshtml" />
-    <Content Include="Views\Order_Book\Edit.cshtml" />
-    <Content Include="Views\Order_Book\Index.cshtml" />
     <Content Include="Views\issuebooks\Create.cshtml" />
     <Content Include="Views\issuebooks\Delete.cshtml" />
     <Content Include="Views\issuebooks\Details.cshtml" />
     <Content Include="Views\issuebooks\Edit.cshtml" />
     <Content Include="Views\issuebooks\Index.cshtml" />
+    <Content Include="Views\returntables\Create.cshtml" />
+    <Content Include="Views\returntables\Delete.cshtml" />
+    <Content Include="Views\returntables\Details.cshtml" />
+    <Content Include="Views\returntables\Edit.cshtml" />
+    <Content Include="Views\returntables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -52,10 +52,11 @@ namespace RegandLogin.Controllers
             {
                 db.new_User.Add(new_User);
                 db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
 
-            return View(new_User);
+            return View();
         }
 
         // GET: new_User/Edit/5

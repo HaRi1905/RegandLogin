@@ -12,12 +12,12 @@ namespace RegandLogin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Book
+    public partial class returntable
     {
-        public int Order_Id { get; set; }
-        public Nullable<int> user_id { get; set; }
-        public string Book_Name { get; set; }
-        public Nullable<System.DateTime> Issue_Date { get; set; }
-        public Nullable<System.DateTime> Return_Date { get; set; }
+        public int return_id { get; set; }
+        public Nullable<System.DateTime> return_date { get; set; }
+        public Nullable<System.DateTime> today_date { get; set; }
+        public Nullable<int> elapse { get; set; }
+        public Nullable<int> fine { get; set; }
     }
 }

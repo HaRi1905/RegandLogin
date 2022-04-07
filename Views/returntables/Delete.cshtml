@@ -1,4 +1,4 @@
-﻿@model RegandLogin.Models.Order_Book
+﻿@model RegandLogin.Models.returntable
 
 @{
     ViewBag.Title = "Delete";
@@ -8,39 +8,39 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Order_Book</h4>
+    <h4>returntable</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.user_id)
+            @Html.DisplayNameFor(model => model.return_date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_id)
+            @Html.DisplayFor(model => model.return_date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Book_Name)
+            @Html.DisplayNameFor(model => model.today_date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Book_Name)
+            @Html.DisplayFor(model => model.today_date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Issue_Date)
+            @Html.DisplayNameFor(model => model.elapse)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Issue_Date)
+            @Html.DisplayFor(model => model.elapse)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Return_Date)
+            @Html.DisplayNameFor(model => model.fine)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Return_Date)
+            @Html.DisplayFor(model => model.fine)
         </dd>
 
     </dl>

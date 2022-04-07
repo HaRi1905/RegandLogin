@@ -28,8 +28,8 @@ namespace RegandLogin.Models
         public DbSet<new_User> new_User { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
-        public DbSet<Order_Book> Order_Book { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<issuebook> issuebooks { get; set; }
+        public DbSet<returntable> returntables { get; set; }
     }
 }

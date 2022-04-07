@@ -53,15 +53,15 @@
           <Property Name="mail" Type="varchar" MaxLength="30" />
           <Property Name="mobile" Type="bigint" />
         </EntityType>
-        <EntityType Name="Order_Book">
+        <EntityType Name="returntable">
           <Key>
-            <PropertyRef Name="Order_Id" />
+            <PropertyRef Name="return_id" />
           </Key>
-          <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="user_id" Type="int" />
-          <Property Name="Book_Name" Type="varchar" MaxLength="30" />
-          <Property Name="Issue_Date" Type="date" />
-          <Property Name="Return_Date" Type="date" />
+          <Property Name="return_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="return_date" Type="date" />
+          <Property Name="today_date" Type="date" />
+          <Property Name="elapse" Type="int" />
+          <Property Name="fine" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK__Book__Author_Nam__4E88ABD4">
           <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
@@ -93,7 +93,7 @@
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="issuebook" EntityType="Self.issuebook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="new_User" EntityType="Self.new_User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order_Book" EntityType="Self.Order_Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="returntable" EntityType="Self.returntable" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Book__Author_Nam__4E88ABD4" Association="Self.FK__Book__Author_Nam__4E88ABD4">
             <End Role="Author" EntitySet="Author" />
             <End Role="Book" EntitySet="Book" />
@@ -122,7 +122,6 @@
           <EntitySet Name="new_User" EntityType="Self.new_User" />
           <EntitySet Name="Authors" EntityType="practice_purposeModel.Author" />
           <EntitySet Name="Books" EntityType="practice_purposeModel.Book" />
-          <EntitySet Name="Order_Book" EntityType="practice_purposeModel.Order_Book" />
           <AssociationSet Name="FK__Book__Author_Nam__4E88ABD4" Association="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4">
             <End Role="Author" EntitySet="Authors" />
             <End Role="Book" EntitySet="Books" />
@@ -133,6 +132,7 @@
             <End Role="Book" EntitySet="Books" />
             <End Role="issuebook" EntitySet="issuebooks" />
           </AssociationSet>
+          <EntitySet Name="returntables" EntityType="practice_purposeModel.returntable" />
         </EntityContainer>
         <EntityType Name="Author">
           <Key>
@@ -155,16 +155,6 @@
           <Property Name="No_Of_Books" Type="Int32" />
           <NavigationProperty Name="Author" Relationship="practice_purposeModel.FK__Book__Author_Nam__4E88ABD4" FromRole="Book" ToRole="Author" />
           <NavigationProperty Name="issuebooks" Relationship="practice_purposeModel.FK__issuebook__book___6FE99F9F" FromRole="Book" ToRole="issuebook" />
-        </EntityType>
-        <EntityType Name="Order_Book">
-          <Key>
-            <PropertyRef Name="Order_Id" />
-          </Key>
-          <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="user_id" Type="Int32" />
-          <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Issue_Date" Type="DateTime" Precision="0" />
-          <Property Name="Return_Date" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK__Book__Author_Nam__4E88ABD4">
           <End Type="practice_purposeModel.Author" Role="Author" Multiplicity="0..1" />
@@ -209,6 +199,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="returntable">
+          <Key>
+            <PropertyRef Name="return_id" />
+          </Key>
+          <Property Name="return_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="return_date" Type="DateTime" Precision="0" />
+          <Property Name="today_date" Type="DateTime" Precision="0" />
+          <Property Name="elapse" Type="Int32" />
+          <Property Name="fine" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -248,17 +248,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order_Book">
-            <EntityTypeMapping TypeName="practice_purposeModel.Order_Book">
-              <MappingFragment StoreEntitySet="Order_Book">
-                <ScalarProperty Name="Return_Date" ColumnName="Return_Date" />
-                <ScalarProperty Name="Issue_Date" ColumnName="Issue_Date" />
-                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="practice_purposeModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
@@ -276,6 +265,17 @@
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="m_id" ColumnName="m_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="returntables">
+            <EntityTypeMapping TypeName="practice_purposeModel.returntable">
+              <MappingFragment StoreEntitySet="returntable">
+                <ScalarProperty Name="fine" ColumnName="fine" />
+                <ScalarProperty Name="elapse" ColumnName="elapse" />
+                <ScalarProperty Name="today_date" ColumnName="today_date" />
+                <ScalarProperty Name="return_date" ColumnName="return_date" />
+                <ScalarProperty Name="return_id" ColumnName="return_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
